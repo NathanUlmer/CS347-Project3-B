@@ -23,6 +23,10 @@ public class playerSize : MonoBehaviour
         // - the size of the player within a certain range
         size = Probabilities.RandomNormalVariable(mean, variance, maxIterations, numRects);
 
+        //Balance Change For Random Size
+        size = Mathf.Clamp(size, 0.85f, 1.15f);
+        //Balancing Done
+
         scaleChange = new Vector3(size, size, size);
 
         player = GameObject.FindGameObjectWithTag("Player");
