@@ -5,16 +5,19 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
 
-  public float moveSpeed = 5f;
+  public float moveSpeed = 4f;
 
   public Rigidbody2D rb;
+
+  public Transform playerTransform;
 
   Vector2 movement;
 
   void Start()
   {
-
-  }
+        playerTransform = GetComponent<Transform>();
+        moveSpeed = moveSpeed * (playerTransform.localScale.x* playerTransform.localScale.x);
+    }
 
   // Update is called once per frame
   void Update()
@@ -22,6 +25,9 @@ public class playerMovement : MonoBehaviour
     // movement and pointer facing
       movement.x = Input.GetAxisRaw("Horizontal");
       movement.y = Input.GetAxisRaw("Vertical");
+
+      
+      
   }
 
   private void FixedUpdate()
